@@ -1,0 +1,551 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  GOV.UK page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% set containerClasses = "app-fct-v2-width-container" %}
+
+{% block content %}
+  <style>
+    /* Match the header, footer and main content width used on
+       cap-home-1.html (1200px) rather than the GOV.UK default. */
+    .govuk-width-container {
+      max-width: 1200px;
+    }
+
+    .govuk-main-wrapper {
+      max-width: 1200px;
+    }
+
+    .app-cap-modal__box {
+      width: min(1100px, calc(100vw - 40px));
+      height: min(92vh, 980px);
+      max-width: none;
+      padding: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .app-cap-modal__header {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 10px 15px;
+      border-bottom: 1px solid #b1b4b6;
+      background: #f3f2f1;
+    }
+
+    .app-cap-modal__close {
+      background: transparent;
+      border: 0;
+      margin: 0;
+      padding: 5px 10px;
+      color: #0b0c0c;
+      font-size: 30px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .app-cap-modal__close:hover {
+      color: #003078;
+    }
+
+    .app-cap-modal__close:focus {
+      outline: 3px solid transparent;
+      background: #ffdd00;
+      box-shadow: 0 2px 0 #0b0c0c;
+      color: #0b0c0c;
+    }
+
+    .app-cap-modal__content {
+      padding: 40px;
+      box-sizing: border-box;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .app-cap-modal__iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #ffffff;
+    }
+
+    html.app-cap-modal-open,
+    body.app-cap-modal-open {
+      overflow: hidden;
+    }
+  </style>
+
+<div class="govuk-modal-dialogue-inert-container">
+
+<div class="app-fct-v2-identity-bar">
+  <div>
+    <p class="app-fct-v2-identity-bar__name">McLOVE, Eoin</p>
+    <p class="app-fct-v2-identity-bar__reference">45AA209820/1</p>
+  </div>
+  <div class="app-fct-v2-identity-bar__actions">
+    <a class="govuk-link govuk-link--no-visited-state" id="open-case-action-plans-modal" href="/cap-v4/cap-home-1">Case action plans</a>
+    <p class="app-fct-v2-identity-bar__autosave">Autosave is on. Last saved <span class="js-autosave-time"></span></p>
+  </div>
+</div>
+
+<div class="govuk-grid-row app-fct-v2-review-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-8">Victim and witness needs</h1>
+
+    <p class="govuk-body govuk-!-margin-bottom-8">Highlight key witness and victim information and actions to help them support the case.</p>
+
+    <details class="govuk-details govuk-!-margin-bottom-8" closed>
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      Help with victim and witness needs
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    
+      <p class="govuk-body">You should consider:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>whether a victim is entitled to a standard or enhanced level of service under the Victims’ Code</li>
+        <li>whether a victim or witness is vulnerable or intimidated and may benefit from special measures. If so, of what type and in what combination</li>
+        <li>whether a victim or witness requires an interpreter and, if so, for what language</li>
+        <li>any children in the household and identify them as victims in domestic abuse cases</li>
+      </ul>
+      <p class="govuk-body govuk-!-margin-bottom-0">See <a class="govuk-link" href="https://www.cps.gov.uk/legal-guidance/special-measures" target="_blank" rel="noopener noreferrer">guidance on special measures (opens in new tab)</a></p>
+    
+  </div>
+</details>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label govuk-visually-hidden" for="victim-and-witness-needs-answer">Victim and witness needs</label>
+      <div class="app-fct-v2-editor">
+        <div class="app-fct-v2-editor__toolbar" role="toolbar" aria-label="Text formatting">
+          <button type="button" class="app-fct-v2-editor__button" data-command="bold" aria-label="Bold"><img src="/public/images/fct-v2/format-bold.svg" alt=""></button>
+          <button type="button" class="app-fct-v2-editor__button" data-command="italic" aria-label="Italic"><img src="/public/images/fct-v2/format-italic.svg" alt=""></button>
+          <button type="button" class="app-fct-v2-editor__button" data-command="underline" aria-label="Underline"><img src="/public/images/fct-v2/format-underline.svg" alt=""></button>
+          <button type="button" class="app-fct-v2-editor__button" data-command="fontSize" data-value="4" aria-label="Text size"><img src="/public/images/fct-v2/format-text-size.svg" alt=""></button>
+          <button type="button" class="app-fct-v2-editor__button" data-command="hiliteColor" data-value="#ffdd00" aria-label="Highlight"><img src="/public/images/fct-v2/format-highlight.svg" alt=""></button>
+          <button type="button" class="app-fct-v2-editor__button" data-command="insertOrderedList" aria-label="Numbered list"><img src="/public/images/fct-v2/format-ordered-list.svg" alt=""></button>
+          <button type="button" class="app-fct-v2-editor__button" data-command="insertUnorderedList" aria-label="Bulleted list"><img src="/public/images/fct-v2/format-bullet-list.svg" alt=""></button>
+        </div>
+        <div class="app-fct-v2-editor__body" id="victim-and-witness-needs-answer" contenteditable="true" role="textbox" aria-multiline="true" aria-describedby="victim-and-witness-needs-answer-info"></div>
+      </div>
+      <div id="victim-and-witness-needs-answer-info" class="govuk-hint govuk-character-count__message app-fct-v2-editor__count" aria-live="polite">
+        You have 32,767 characters remaining
+      </div>
+    </div>
+
+    <div class="govuk-button-group govuk-!-margin-top-8">
+      
+<a href="#" role="button" draggable="false" class="govuk-button" data-module="govuk-button">
+  Save and continue
+</a>
+
+      <a class="govuk-link" href="#">Save and exit</a>
+    </div>
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+
+  
+
+  <div class="app-fct-v2-step-nav" data-module="fct-v2-case-progression-step-nav">
+    <p class="app-fct-v2-step-nav__caption">Police charged case - first review</p>
+    <p class="app-fct-v2-step-nav__due">Due by <span class="js-review-due-date">2 Sept 2025</span></p>
+
+    <div class="app-step-nav app-step-nav--fct-v2 js-fct-v2-step-nav">
+      <ol class="app-step-nav__steps">
+
+          
+          <li class="app-step-nav__step js-step">
+            <div class="app-step-nav__header js-toggle-panel" data-position="1">
+              <h2 class="app-step-nav__title">
+                <span class="app-step-nav__circle app-step-nav__circle--number">
+                  <span class="app-step-nav__circle-inner">
+                    <span class="app-step-nav__circle-background">
+                      <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
+                      1<span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
+                    </span>
+                  </span>
+                </span>
+                <button type="button" class="app-step-nav__button app-step-nav__button--title js-step-toggle" aria-expanded="true">
+                  Post charge analysis
+                </button>
+              </h2>
+              
+                <p class="app-step-nav__controls">
+                  <button type="button" class="app-step-nav__button app-step-nav__button--controls js-step-toggle" aria-expanded="true">
+                    <span class="js-toggle-link">Hide</span>
+                    <span class="govuk-visually-hidden"> Post charge analysis tasks</span>
+                  </button>
+                </p>
+              
+            </div>
+
+              <div class="app-step-nav__panel js-panel">
+                
+                <ul class="app-task-nav">
+
+                    
+                    
+                    <li class="app-task-nav__item app-task-nav__item--complete">
+                      
+                        <a class="app-task-nav__link app-task-nav__label" href="#">
+                          <span class="govuk-visually-hidden">Completed: </span>Case summary
+                        </a>
+                      
+                    </li>
+
+                    
+                    
+                    <li class="app-task-nav__item app-task-nav__item--complete">
+                      
+                        <a class="app-task-nav__link app-task-nav__label" href="#">
+                          <span class="govuk-visually-hidden">Completed: </span>Evidential analysis
+                        </a>
+                      
+                    </li>
+
+                    
+                    
+                    <li class="app-task-nav__item app-task-nav__item--complete">
+                      
+                        <a class="app-task-nav__link app-task-nav__label" href="#">
+                          <span class="govuk-visually-hidden">Completed: </span>Public interest assessment
+                        </a>
+                      
+                    </li>
+
+                    
+                    
+                    <li class="app-task-nav__item app-task-nav__item--complete">
+                      
+                        <a class="app-task-nav__link app-task-nav__label" href="#">
+                          <span class="govuk-visually-hidden">Completed: </span>Disclosure management
+                        </a>
+                      
+                    </li>
+
+                    
+                    
+                    <li class="app-task-nav__item app-task-nav__item--complete">
+                      
+                        <a class="app-task-nav__link app-task-nav__label" href="#">
+                          <span class="govuk-visually-hidden">Completed: </span>Allocation
+                        </a>
+                      
+                    </li>
+
+                    
+                    
+                    <li class="app-task-nav__item app-task-nav__item--current">
+                      
+                        <span class="app-task-nav__label" aria-current="page">Victim and witness needs</span>
+                      
+                    </li>
+
+                    
+                    
+                    <li class="app-task-nav__item">
+                      
+                        <a class="app-task-nav__link app-task-nav__label" href="#">
+                          Trial and sentencing preparation
+                        </a>
+                      
+                    </li>
+
+                    
+                    
+                    <li class="app-task-nav__item">
+                      
+                        <a class="app-task-nav__link app-task-nav__label" href="#">
+                          Human rights
+                        </a>
+                      
+                    </li>
+
+                    
+                    
+                    <li class="app-task-nav__item">
+                      
+                        <a class="app-task-nav__link app-task-nav__label" href="#">
+                          Advocate and operational delivery instructions
+                        </a>
+                      
+                    </li>
+
+                    
+                    
+                    <li class="app-task-nav__item">
+                      
+                        <a class="app-task-nav__link app-task-nav__label" href="#">
+                          Monitoring codes
+                        </a>
+                      
+                    </li>
+
+                    
+                    
+                    <li class="app-task-nav__item">
+                      
+                        <a class="app-task-nav__link app-task-nav__label" href="#">
+                          Preview
+                        </a>
+                      
+                    </li>
+                  
+                </ul>
+              </div>
+            
+          </li>
+
+          
+          <li class="app-step-nav__step js-step">
+            <div class="app-step-nav__header js-toggle-panel" data-position="2">
+              <h2 class="app-step-nav__title">
+                <span class="app-step-nav__circle app-step-nav__circle--number">
+                  <span class="app-step-nav__circle-inner">
+                    <span class="app-step-nav__circle-background">
+                      <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
+                      2<span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
+                    </span>
+                  </span>
+                </span>
+                <button type="button" class="app-step-nav__button app-step-nav__button--title js-step-toggle" aria-expanded="false">
+                  DG file quality assessment
+                </button>
+              </h2>
+              
+            </div>
+
+          </li>
+
+          
+          <li class="app-step-nav__step js-step">
+            <div class="app-step-nav__header js-toggle-panel" data-position="3">
+              <h2 class="app-step-nav__title">
+                <span class="app-step-nav__circle app-step-nav__circle--number">
+                  <span class="app-step-nav__circle-inner">
+                    <span class="app-step-nav__circle-background">
+                      <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
+                      3<span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
+                    </span>
+                  </span>
+                </span>
+                <button type="button" class="app-step-nav__button app-step-nav__button--title js-step-toggle" aria-expanded="false">
+                  Case action plan
+                </button>
+              </h2>
+              
+            </div>
+
+          </li>
+
+          
+          <li class="app-step-nav__step js-step">
+            <div class="app-step-nav__header js-toggle-panel" data-position="4">
+              <h2 class="app-step-nav__title">
+                <span class="app-step-nav__circle app-step-nav__circle--number">
+                  <span class="app-step-nav__circle-inner">
+                    <span class="app-step-nav__circle-background">
+                      <span class="app-step-nav__circle-step-label govuk-visually-hidden">Step</span>
+                      4<span class="app-step-nav__circle-step-colon govuk-visually-hidden" aria-hidden="true">:</span>
+                    </span>
+                  </span>
+                </span>
+                <button type="button" class="app-step-nav__button app-step-nav__button--title js-step-toggle" aria-expanded="false">
+                  Submit review
+                </button>
+              </h2>
+              
+            </div>
+
+          </li>
+        
+      </ol>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var dueDateEl = document.querySelector('.js-review-due-date');
+      if (dueDateEl) {
+        var dueDate = new Date();
+        dueDate.setDate(dueDate.getDate() + 14);
+        dueDateEl.textContent = dueDate.toLocaleDateString('en-GB', {
+          day: 'numeric',
+          month: 'short',
+          year: 'numeric'
+        });
+      }
+
+      document.querySelectorAll('.js-fct-v2-step-nav .js-step-toggle').forEach(function (button) {
+        button.addEventListener('click', function () {
+          var header = button.closest('.js-toggle-panel');
+          var panel = header.nextElementSibling;
+          if (!panel || !panel.classList.contains('js-panel')) { return; }
+
+          var willExpand = panel.classList.contains('js-hidden');
+          panel.classList.toggle('js-hidden', !willExpand);
+
+          header.querySelectorAll('.js-step-toggle').forEach(function (toggleButton) {
+            toggleButton.setAttribute('aria-expanded', willExpand ? 'true' : 'false');
+          });
+
+          var toggleLink = header.querySelector('.js-toggle-link');
+          if (toggleLink) {
+            toggleLink.textContent = willExpand ? 'Hide' : 'Show';
+          }
+        });
+      });
+    })();
+  </script>
+
+  </div>
+</div>
+
+<script>
+  (function () {
+    var MAX_CHARACTERS = 32767;
+    var editor = document.getElementById('victim-and-witness-needs-answer');
+    var message = document.getElementById('victim-and-witness-needs-answer-info');
+
+    document.querySelectorAll('.app-fct-v2-editor__button').forEach(function (button) {
+      button.addEventListener('click', function () {
+        editor.focus();
+        document.execCommand(button.dataset.command, false, button.dataset.value || null);
+      });
+    });
+
+    editor.addEventListener('input', function () {
+      var remaining = MAX_CHARACTERS - editor.textContent.length;
+      message.textContent = 'You have ' + remaining.toLocaleString() + ' characters remaining';
+    });
+
+    var autosaveTime = document.querySelector('.js-autosave-time');
+    if (autosaveTime) {
+      function updateAutosaveTime() {
+        var now = new Date();
+        now.setSeconds(now.getSeconds() - 10);
+        autosaveTime.textContent = now.toLocaleTimeString('en-GB');
+      }
+
+      updateAutosaveTime();
+      setInterval(updateAutosaveTime, 11000);
+    }
+  })();
+</script>
+
+</div>
+
+<div class="govuk-modal-dialogue" id="case-action-plans-modal" data-inert-container=".govuk-modal-dialogue-inert-container" hidden>
+  <div class="govuk-modal-dialogue__wrapper">
+    <dialog class="govuk-modal-dialogue__box app-cap-modal__box" aria-labelledby="case-action-plans-modal-title" aria-modal="true" role="modal" tabindex="-1">
+      <div class="govuk-modal-dialogue__header app-cap-modal__header">
+        <button type="button" class="govuk-modal-dialogue__close app-cap-modal__close" aria-label="close" data-element="govuk-modal-dialogue-close">&times;</button>
+      </div>
+      <div class="govuk-modal-dialogue__content app-cap-modal__content">
+        <h2 class="govuk-modal-dialogue__heading govuk-heading-l govuk-visually-hidden" id="case-action-plans-modal-title">
+          Case action plans
+        </h2>
+        <iframe
+          class="app-cap-modal__iframe"
+          src="cap-home-1.html"
+          title="Case action plans"
+        ></iframe>
+      </div>
+    </dialog>
+  </div>
+  <div class="govuk-modal-dialogue__backdrop" data-element="govuk-modal-dialogue-close"></div>
+</div>
+
+<script>
+  (function () {
+    var openLink = document.getElementById('open-case-action-plans-modal');
+    var modal = document.getElementById('case-action-plans-modal');
+    if (!openLink || !modal) return;
+
+    var dialog = modal.querySelector('dialog');
+    var iframe = modal.querySelector('.app-cap-modal__iframe');
+    var modalStartPage = 'cap-home-1.html';
+    var inertContainer = document.querySelector('.govuk-modal-dialogue-inert-container');
+    if (!dialog || !inertContainer) return;
+
+    function hideIframePageChrome() {
+      if (!iframe || !iframe.contentDocument) return;
+
+      var doc = iframe.contentDocument;
+      if (doc.documentElement) {
+        doc.documentElement.style.overflowX = 'hidden';
+      }
+      if (doc.body) {
+        doc.body.style.overflowX = 'hidden';
+      }
+
+      var selectors = [
+        '.govuk-header',
+        '.govuk-footer',
+        '.govuk-phase-banner',
+        '.govuk-service-navigation',
+        'header[role="banner"]',
+        'nav[aria-label="Service information"]',
+        'footer[role="contentinfo"]'
+      ];
+
+      selectors.forEach(function (selector) {
+        doc.querySelectorAll(selector).forEach(function (element) {
+          element.style.display = 'none';
+        });
+      });
+
+      doc.querySelectorAll('.govuk-width-container, .govuk-main-wrapper').forEach(function (element) {
+        element.style.maxWidth = '100%';
+        element.style.width = '100%';
+        element.style.boxSizing = 'border-box';
+      });
+    }
+
+    function openModal() {
+      if (iframe) {
+        iframe.src = modalStartPage;
+      }
+      modal.hidden = false;
+      inertContainer.setAttribute('inert', '');
+      document.documentElement.classList.add('app-cap-modal-open');
+      document.body.classList.add('app-cap-modal-open');
+      dialog.showModal();
+    }
+
+    function closeModal() {
+      if (dialog.open) dialog.close();
+      modal.hidden = true;
+      inertContainer.removeAttribute('inert');
+      document.documentElement.classList.remove('app-cap-modal-open');
+      document.body.classList.remove('app-cap-modal-open');
+    }
+
+    openLink.addEventListener('click', function (event) {
+      event.preventDefault();
+      openModal();
+    });
+
+    if (iframe) {
+      iframe.addEventListener('load', hideIframePageChrome);
+    }
+
+    modal.addEventListener('click', function (event) {
+      var closeTrigger = event.target.closest('[data-element="govuk-modal-dialogue-close"]');
+      if (closeTrigger) closeModal();
+    });
+
+    dialog.addEventListener('cancel', function (event) {
+      event.preventDefault();
+      closeModal();
+    });
+  })();
+</script>
+
+{% endblock %}

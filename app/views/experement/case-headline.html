@@ -4,84 +4,11 @@
   GOV.UK page template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
-{% set caseName = "McLOVE, Eoin and 4 Others" %}
+{% set caseName = "COOPER, Sheldon and 3 Others" %}
 {% set caseReference = "45AA209820/1" %}
 
 {% block content %}
   <style>
-    .app-step-nav__button,
-    .app-step-nav__header.js-toggle-panel {
-      display: none !important;
-    }
-
-    .app-step-nav__panel {
-      display: block !important;
-    }
-
-    .step-content {
-      margin-top: 0.75rem;
-    }
-
-    .step-content[hidden] {
-      display: none;
-    }
-
-    .app-step-nav__step {
-      display: block;
-      margin-bottom: 1rem;
-    }
-
-    .step-inline-link,
-    .step-inline-link:visited,
-    .step-inline-link:hover,
-    .step-inline-link:active,
-    .step-inline-link:focus {
-      color: #0b0c0c;
-      text-decoration: none;
-    }
-
-    .step-inline-link:hover,
-    .step-inline-link:focus {
-      color: #1d70b8;
-      text-decoration: underline;
-    }
-
-    #step-toggle-link {
-      display: inline-block;
-      margin-bottom: 1rem;
-      color: #1d70b8;
-      text-decoration: underline;
-      line-height: 1.25;
-      font-size: 19px;
-    }
-
-    #step-toggle-link:hover,
-    #step-toggle-link:focus,
-    #step-toggle-link:active {
-      color: #003078;
-      text-decoration-thickness: 3px;
-      text-underline-offset: 0.1em;
-    }
-
-    #step-toggle-link:visited {
-      color: #4c2c92;
-    }
-
-    .js-step-title,
-    .js-step-title:link,
-    .js-step-title:visited,
-    .js-step-title:active,
-    .js-step-title:focus {
-      color: #0b0c0c;
-      text-decoration: none;
-    }
-
-    .js-step-title:hover,
-    .js-step-title:focus {
-      color: #1d70b8;
-      text-decoration: underline;
-    }
-
     /* The shared layout (includes/wide.html) sets the page width to 1400px,
        but the real CPS site this page is modelled on is 1200px wide. Since
        that shared file affects every other page using this layout, the
@@ -171,7 +98,7 @@
     .app-case-headline-row .govuk-grid-column-two-thirds {
         order: 2;
     }
-    
+
   </style>
 
   <div class="app-autosave-status">
@@ -179,167 +106,67 @@
       <p class="govuk-heading-s govuk-!-margin-bottom-0">{{ caseName }}</p>
       <p class="govuk-body-s govuk-!-margin-bottom-0">{{ caseReference }}</p>
     </div>
-    <p class="govuk-body-s govuk-!-margin-bottom-0">Autosave is on. Last saved <span class="js-autosave-time"></span></p>
+    <p class="govuk-body-s govuk-!-margin-bottom-0"><a href="#" class="govuk-link govuk-link--no-visited-state govuk-!-margin-right-2">Case action plans</a>Autosave is on. Last saved <span class="js-autosave-time"></span></p>
   </div>
 
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-one-quarter">
-      <h3 class="govuk-heading-s">28 day PCD review</h3>
-      <p class="govuk-body">Due by 22 Jan 2026</p>
+      <div class="govuk-body govuk-!-padding-right-4">
+        <div class="govuk-!-margin-bottom-3">
+          <span class="govuk-!-font-weight-bold">28 day PCD review</span>
+        </div>
+        <div class="govuk-!-margin-bottom-6">
+          <span>Due by 22 Jan 2026</span>
+        </div>
 
-      <div id="step-by-step-navigation" class="app-step-nav app-step-nav--large">
-        <ol class="app-step-nav__steps">
-          <li class="app-step-nav__step" id="check-you-re-allowed-to-drive">
-            <div class="app-step-nav__header" data-position="1">
-              <h2 class="app-step-nav__title">
-                <span class="app-step-nav__circle app-step-nav__circle--number">
-                  <span class="app-step-nav__circle-inner">
-                    <span class="app-step-nav__circle-background">
-                      <span class="govuk-visually-hidden govuk-!-display-none-print">Step</span> 1
-                      <span class="govuk-visually-hidden govuk-!-display-none-print" aria-hidden="true">:</span>
-                    </span>
-                  </span>
-                </span>
-                <a href="#" class="govuk-link js-step-title govuk-heading-s">
-                  Code test
-                </a>
-              </h2>
-            </div>
+        <div class="govuk-!-margin-bottom-4">
+          <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">1 Code test</p>
+          <p class="govuk-body-s govuk-!-margin-bottom-2">You've selected Full Code Test</p>
+          <p class="govuk-body-s govuk-!-margin-bottom-0"><a href="select-test-type.html" class="govuk-link">Change</a></p>
+          <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-3 govuk-!-margin-bottom-0">
+        </div>
 
-            <div class="app-step-nav__panel" id="step-panel-check-you-re-allowed-to-drive-1">
-              <p class="app-step-nav__paragraph">
-                <a href="select-test-type.html" class="govuk-link">Change</a>
-              </p>
-            </div>
-          </li>
+        <div class="govuk-!-margin-bottom-4">
+          <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1">2 Pre-charge decision analysis</p>
+          <a href="#" class="govuk-link" aria-expanded="false" aria-controls="step-2-content" id="step-toggle-link">Show</a>
 
-          <li class="app-step-nav__step" id="get-a-provisional-licence">
-            <div class="app-step-nav__header" data-position="2">
-              <h2 class="app-step-nav__title">
-                <span class="app-step-nav__circle app-step-nav__circle--number">
-                  <span class="app-step-nav__circle-inner">
-                    <span class="app-step-nav__circle-background">
-                      <span class="govuk-visually-hidden govuk-!-display-none-print">Step</span> 2
-                      <span class="govuk-visually-hidden govuk-!-display-none-print" aria-hidden="true">:</span>
-                    </span>
-                  </span>
-                </span>
-                <a href="#" class="govuk-link js-step-title govuk-heading-s">
-                  Pre-charge decision analysis
-                </a>
-              </h2>
-            </div>
+          <div id="step-2-content" class="govuk-!-margin-top-2" hidden>
+            <ul class="govuk-list">
+              <li class="govuk-!-margin-bottom-2"><span class="govuk-!-font-weight-bold">Case headline</span><span class="govuk-visually-hidden"> current</span></li>
+              <li><a href="#" class="govuk-link">Evidential analysis</a></li>
+              <li><a href="#" class="govuk-link">Public interest assessment</a></li>
+              <li><a href="#" class="govuk-link">Disclosure management</a></li>
+              <li><a href="#" class="govuk-link">Allocation</a></li>
+              <li><a href="#" class="govuk-link">Victim and witness needs</a></li>
+              <li><a href="#" class="govuk-link">Trial and sentencing preparation</a></li>
+              <li><a href="#" class="govuk-link">Human rights</a></li>
+              <li><a href="#" class="govuk-link">Advocate and operational delivery instructions</a></li>
+              <li><a href="#" class="govuk-link">Monitoring codes</a></li>
+              <li><a href="#" class="govuk-link">Preview</a></li>
+            </ul>
+          </div>
+          <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-3 govuk-!-margin-bottom-0">
+        </div>
 
-            <a href="#" class="govuk-link" aria-expanded="false" aria-controls="step-2-content" id="step-toggle-link">
-              Show
-            </a>
+        <div class="govuk-!-margin-bottom-4">
+          <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0">3 DG file quality assessment</p>
+          <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-3 govuk-!-margin-bottom-0">
+        </div>
 
-            <div id="step-2-content" class="step-content" hidden>
-              <ul class="govuk-list govuk-list--bullet">
-                <li><a href="#" class="govuk-link step-inline-link">Case headline</a></li>
-                <li><a href="#" class="govuk-link step-inline-link">Evidential analysis</a></li>
-                <li><a href="#" class="govuk-link step-inline-link">Public interest assessment</a></li>
-                <li><a href="#" class="govuk-link step-inline-link">Disclosure management</a></li>
-                <li><a href="#" class="govuk-link step-inline-link">Allocation</a></li>
-                <li><a href="#" class="govuk-link step-inline-link">Victim and witness needs</a></li>
-                <li><a href="#" class="govuk-link step-inline-link">Trial and sentencing preparation</a></li>
-                <li><a href="#" class="govuk-link step-inline-link">Human rights</a></li>
-                <li><a href="#" class="govuk-link step-inline-link">Advocate and operational delivery instructions</a></li>
-                <li><a href="#" class="govuk-link step-inline-link">Monitoring codes</a></li>
-                <li><a href="#" class="govuk-link step-inline-link">Preview</a></li>
-              </ul>
-            </div>
-          </li>
+        <div class="govuk-!-margin-bottom-4">
+          <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0">4 Charging decision</p>
+          <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-3 govuk-!-margin-bottom-0">
+        </div>
 
-          <li class="app-step-nav__step" id="driving-lessons-and-practice">
-            <div class="app-step-nav__header" data-position="3">
-              <h2 class="app-step-nav__title">
-                <span class="app-step-nav__circle app-step-nav__circle--number">
-                  <span class="app-step-nav__circle-inner">
-                    <span class="app-step-nav__circle-background">
-                      <span class="govuk-visually-hidden govuk-!-display-none-print">Step</span> 3
-                      <span class="govuk-visually-hidden govuk-!-display-none-print" aria-hidden="true">:</span>
-                    </span>
-                  </span>
-                </span>
-                <a href="#" class="govuk-link js-step-title govuk-heading-s">
-                  Director's Guidance Assessment
-                </a>
-              </h2>
-            </div>
+        <div class="govuk-!-margin-bottom-4">
+          <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0">5 Case action plan</p>
+          <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-top-3 govuk-!-margin-bottom-0">
+        </div>
 
-            <div class="app-step-nav__panel" id="step-panel-driving-lessons-and-practice-3">
-              <p class="app-step-nav__paragraph"></p>
-            </div>
-          </li>
-
-          <li class="app-step-nav__step" id="prepare-for-your-theory-test">
-            <div class="app-step-nav__header" data-position="4">
-              <h2 class="app-step-nav__title">
-                <span class="app-step-nav__circle app-step-nav__circle--number">
-                  <span class="app-step-nav__circle-inner">
-                    <span class="app-step-nav__circle-background">
-                      <span class="govuk-visually-hidden govuk-!-display-none-print">Step</span> 4
-                      <span class="govuk-visually-hidden govuk-!-display-none-print" aria-hidden="true">:</span>
-                    </span>
-                  </span>
-                </span>
-                <a href="#" class="govuk-link js-step-title govuk-heading-s">
-                  Charging decision
-                </a>
-              </h2>
-            </div>
-
-            <div class="app-step-nav__panel" id="step-panel-prepare-for-your-theory-test-4">
-              <p class="app-step-nav__paragraph"></p>
-            </div>
-          </li>
-
-          <li class="app-step-nav__step" id="book-and-manage-your-theory-test">
-            <div class="app-step-nav__header" data-position="5">
-              <h2 class="app-step-nav__title">
-                <span class="app-step-nav__circle app-step-nav__circle--number">
-                  <span class="app-step-nav__circle-inner">
-                    <span class="app-step-nav__circle-background">
-                      <span class="govuk-visually-hidden govuk-!-display-none-print">Step</span> 5
-                      <span class="govuk-visually-hidden govuk-!-display-none-print" aria-hidden="true">:</span>
-                    </span>
-                  </span>
-                </span>
-                <a href="#" class="govuk-link js-step-title govuk-heading-s">
-                  Case action plan
-                </a>
-              </h2>
-            </div>
-
-            <div class="app-step-nav__panel" id="step-panel-book-and-manage-your-theory-test-5">
-              <p class="app-step-nav__paragraph"></p>
-            </div>
-          </li>
-
-          <li class="app-step-nav__step" id="book-and-manage-your-driving-test">
-            <div class="app-step-nav__header" data-position="6">
-              <h2 class="app-step-nav__title">
-                <span class="app-step-nav__circle app-step-nav__circle--number">
-                  <span class="app-step-nav__circle-inner">
-                    <span class="app-step-nav__circle-background">
-                      <span class="govuk-visually-hidden govuk-!-display-none-print">Step</span> 6
-                      <span class="govuk-visually-hidden govuk-!-display-none-print" aria-hidden="true">:</span>
-                    </span>
-                  </span>
-                </span>
-                <a href="#" class="govuk-link js-step-title govuk-heading-s">
-                  Final review
-                </a>
-              </h2>
-            </div>
-
-            <div class="app-step-nav__panel" id="step-panel-book-and-manage-your-driving-test-6">
-              <p class="app-step-nav__paragraph"></p>
-            </div>
-          </li>
-        </ol>
+        <div class="govuk-!-margin-bottom-0">
+          <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-0">6 Submit review</p>
+        </div>
       </div>
     </div>
 
