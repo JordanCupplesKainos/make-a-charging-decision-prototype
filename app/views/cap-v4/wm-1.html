@@ -367,6 +367,14 @@
           element.style.width = '100%';
           element.style.boxSizing = 'border-box';
         });
+
+        // The modal content already has 40px padding, so strip the page's
+        // own vertical padding to avoid doubling it up.
+        doc.querySelectorAll('.govuk-main-wrapper').forEach(function (element) {
+          element.style.paddingTop = '0';
+          element.style.paddingBottom = '0';
+          element.style.minHeight = '0';
+        });
       }
 
       function openModal() {
