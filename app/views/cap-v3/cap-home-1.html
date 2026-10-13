@@ -229,7 +229,32 @@
     <p class="govuk-body-s govuk-!-margin-bottom-0"> <span class="js-autosave-time"></span></p>
   </div>
 
-  <a href="wm-1.html" class="govuk-back-link">Back</a>
+  <a href="wm-1.html" class="govuk-back-link js-back-link">Back</a>
+
+  <script>
+    // Return the user to whichever page they arrived from (for example
+    // wm-1 or case-review-1), falling back to the href above if there is
+    // no in-prototype referrer (direct visit, new tab, etc).
+    (function () {
+      var backLink = document.querySelector('.js-back-link');
+      if (!backLink) return;
+
+      var referrer = document.referrer;
+      var cameFromPrototype = referrer &&
+        new URL(referrer, window.location.href).origin === window.location.origin &&
+        referrer !== window.location.href;
+
+      if (!cameFromPrototype) return;
+
+      backLink.setAttribute('href', referrer);
+      backLink.addEventListener('click', function (event) {
+        if (window.history.length > 1) {
+          event.preventDefault();
+          window.history.back();
+        }
+      });
+    })();
+  </script>
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
