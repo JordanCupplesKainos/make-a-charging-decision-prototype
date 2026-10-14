@@ -232,27 +232,44 @@
   <a href="wm-1.html" class="govuk-back-link js-back-link">Back</a>
 
   <script>
-    // Return the user to whichever page they arrived from (for example
-    // wm-1 or case-review-1), falling back to the href above if there is
-    // no in-prototype referrer (direct visit, new tab, etc).
+    // The back link should only ever return the user to the screen they
+    // entered this flow from - wm-1 or case-review-1. Any other referrer
+    // (for example add-action-point-1, which links back here) is ignored,
+    // otherwise the user gets stuck bouncing between pages.
     (function () {
+      var ALLOWED_PAGES = ['wm-1', 'case-review-1'];
+      var STORAGE_KEY = 'capHomeEntryPoint';
+
       var backLink = document.querySelector('.js-back-link');
       if (!backLink) return;
 
-      var referrer = document.referrer;
-      var cameFromPrototype = referrer &&
-        new URL(referrer, window.location.href).origin === window.location.origin &&
-        referrer !== window.location.href;
+      function allowedPageFrom(url) {
+        if (!url) return null;
 
-      if (!cameFromPrototype) return;
-
-      backLink.setAttribute('href', referrer);
-      backLink.addEventListener('click', function (event) {
-        if (window.history.length > 1) {
-          event.preventDefault();
-          window.history.back();
+        var parsed;
+        try {
+          parsed = new URL(url, window.location.href);
+        } catch (e) {
+          return null;
         }
-      });
+
+        if (parsed.origin !== window.location.origin) return null;
+
+        var name = parsed.pathname.split('/').pop().replace(/\.html$/, '');
+        return ALLOWED_PAGES.indexOf(name) !== -1 ? parsed.pathname : null;
+      }
+
+      // Remember the entry point the first time the user arrives from one of
+      // the allowed screens, so it survives trips through the add/edit flow.
+      var fromReferrer = allowedPageFrom(document.referrer);
+      if (fromReferrer) {
+        sessionStorage.setItem(STORAGE_KEY, fromReferrer);
+      }
+
+      var destination = fromReferrer || sessionStorage.getItem(STORAGE_KEY);
+      if (destination) {
+        backLink.setAttribute('href', destination);
+      }
     })();
   </script>
 
